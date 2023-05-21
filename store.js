@@ -13,6 +13,19 @@ export class Store {
   updateDiscounts() {
     for (var i = 0; i < this.discountOffers.length; i++) {
       switch (this.discountOffers[i].partnerName){
+        case "BackMarket" :
+          this.discountOffers[i].expiresIn-=1;
+          // If already expired and discount will not go under 0 :
+          if (this.discountOffers[i].expiresIn<0 && this.discountOffers[i].discountInPercent>=4){
+            // fast decrease
+            this.discountOffers[i].discountInPercent-=4;
+          }
+          // If not expired and discount will not go under 0 :
+          else if (this.discountOffers[i].discountInPercent>=2){
+            //slow decrease
+            this.discountOffers[i].discountInPercent-=2;
+          }
+          break;
         case "Naturalia" :
           this.discountOffers[i].expiresIn-=1;
           // If already expired and discount will not go over 50 :
