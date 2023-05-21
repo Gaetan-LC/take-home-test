@@ -10,12 +10,12 @@ const discountOffers = [
 ];
 const store = new Store(discountOffers);
 
-const log = [];
+const arrayLog = [];
 
 for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
-  log.push(JSON.stringify(store.updateDiscounts()));
+  arrayLog.push(JSON.stringify(store.updateDiscounts()));
 }
-
+const log = JSON.stringify(arrayLog);
 /* eslint-disable no-console */
 fs.writeFile("output.txt", log, err => {
   if (err) {
